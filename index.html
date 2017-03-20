@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title> Neurocheck </title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.js"></script>
+
+</head>
+
+<style>
+
+#q8 {
+    float: left;
+    /*margin: 20px;*/
+    margin-left: 50px;
+}
+
+.left{
+	float: left;
+	/*margin: 20px;*/
+}
+
+.disappear{
+	display: none;
+}
+
+h2{
+	margin-bottom: 15px;
+}
+h3{
+	margin: 0;
+}
+
+</style>
+
+
+
+
+<body>
+
+<div id='input'>
+
+<input id="dateInput" type="date" name="date" />
+<input id="timeInput" type="time" name="time" />
+<button id="submit"> Submit </button>
+
+</div>
+
+<h2> Name: </h2>
+
+<div class='left'>
+<h3> Q 15 mins for 1 hr </h3>
+<div id="q15"></div>
+
+<h3> Q 30 mins for 2 hrs </h3>
+<div id='q30'></div>
+
+<h3> Q 1hr for 4hr </h3>
+<div id='q1'></div>
+
+<h3> Q 4hr for 24hr </h3>
+<div id='q4'></div>
+
+</div>
+
+<div id='q8'>
+
+<h3> Q Shift(8hr) for 48hr </h3>
+<div id='q8'></div>
+
+</div>
+
+
+ 
+ </body>
+
+
+
+
+<script>
+
+$('#submit').on('click', function(){
+var time = $('#timeInput').val()
+var date = $('#dateInput').val()
+var dateTime = moment(date + ' ' + time)
+
+$('#input').addClass('disappear')
+
+console.log(date)
+console.log(time)
+console.log(dateTime)
+
+for(var i = 0; i <= 4; i++){
+  var p = $('<p>')
+  var newDateTime = dateTime.add(15, 'm').format('LLL')
+  p.text(newDateTime)
+  $('#q15').append(p)
+
+}
+
+for(var i = 0; i <= 4; i++){
+  p = $('<p>')
+  newDateTime = dateTime.add(30, 'm').format('LLL')
+  p.text(newDateTime)
+  $('#q30').append(p)
+
+}
+
+
+for(var i = 0; i <= 4; i++){
+  p = $('<p>')
+  newDateTime = dateTime.add(1, 'h').format('LLL')
+  p.text(newDateTime)
+  $('#q1').append(p)
+
+}
+
+for(var i = 0; i <= 6; i++){
+  p = $('<p>')
+  newDateTime = dateTime.add(4, 'h').format('LLL')
+  p.text(newDateTime)
+  $('#q4').append(p)
+
+}
+
+for(var i = 0; i <= 6; i++){
+  p = $('<p>')
+  newDateTime = dateTime.add(8, 'h').format('LLL')
+  p.text(newDateTime)
+  $('#q8').append(p)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</html>
